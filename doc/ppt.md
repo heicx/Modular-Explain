@@ -50,10 +50,12 @@ speaker: heicx_sudo
 
 [slide]
 
+# CommonJS规范
 > CMD( Common Module Definition )
 
 * CMD是sea.js在推广过程中对模块定义的规范化而产出。 {:&.moveIn}
 * CMD模块推崇依赖就近，用需加载。
+
 
 > 闭包模块异步加载，闭包内的require依赖为同步执行，require.async解决异步问题，更灵活更方便。
 
@@ -77,6 +79,11 @@ speaker: heicx_sudo
      
      define define(id?, deps?, factory); // Modules/AMD support Simplified CommonJS Wrapper
 ```
+
+[slide]
+
+
+# CommonJS Modules的衍生派系
 * [Modules/2.0]( http://www.seajs.org ) 流派 代表.FlyScript Sea.js
 ```javascript
      define(id?, deps?, factory); // Modules/CMD
@@ -91,14 +98,12 @@ speaker: heicx_sudo
 
 
 # 目前主流的模块化框架有哪些？
-* mod.js 
-!["mod.js"](/images/fis.png) {:&.moveIn}
+* mod.js {:&.moveIn}
+* !["mod.js"](/images/fis.png)
 * sea.js
-
-!["sea.js"](/images/seajs.png) {:&.moveIn}
+* !["sea.js"](/images/seajs.png)
 * require.js
-
-!["require.js"](/images/require.png) {:&.moveIn}
+* !["require.js"](/images/require.png)
 * flyscript( Modules/Wrappings )
 
 [slide]
