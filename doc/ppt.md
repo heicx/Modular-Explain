@@ -92,11 +92,13 @@ speaker: heicx_sudo
 
 # 目前主流的模块化框架有哪些？
 * mod.js 
-!["mod.js"](/images/fis.png)
+!["mod.js"](/images/fis.png) {:&.moveIn}
 * sea.js
-!["sea.js"](/images/sea.png)
+
+!["sea.js"](/images/seajs.png) {:&.moveIn}
 * require.js
-!["require.js"](/images/require.png)
+
+!["require.js"](/images/require.png) {:&.moveIn}
 * flyscript( Modules/Wrappings )
 
 [slide]
