@@ -14,7 +14,7 @@ speaker: heicx_sudo
 * 全局变量命名冲突 {:&.moveIn}
 * 依赖关系繁琐
 * 业务逻辑模块化，页面内容碎片化。
-* 合理抽象模块公共化。  
+* 合理抽象模块公共化。
 
 [slide]
 
@@ -32,10 +32,11 @@ speaker: heicx_sudo
 
 ---
 ### 发展背景：伟大的CommonJS社区
-> CommonJS社区由许多致力于标准化开源的牛人组建，CommonJS的前身原本叫ServerJS，在2009年-2010年期间推出了Modules/1.0规范后，在Node.js等环境下的应用中取得了很好的[成就](http://wiki.commonjs.org/wiki/Special:WhatLinksHere/Modules/1.0 )。
+> CommonJS社区由许多致力于标准化开源的牛人组建，CommonJS的前身原本叫ServerJS，在2009年-2010年期间推出了Modules/1.0规范后，在Node.js等环境下的运用中取得了突出的[成就](http://wiki.commonjs.org/wiki/Special:WhatLinksHere/Modules/1.0 )。
+
 
 ### 在CommonJS规范的不断完善过程中，发展并衍生出三大派系
-> 在了解CommonJS派系之前，让我先看一下它有哪些规范？
+* 在了解CommonJS派系之前，让我先看一下它有哪些规范？ {:&.moveIn}
 
 [slide]
 
@@ -56,7 +57,7 @@ speaker: heicx_sudo
 * CMD是sea.js在推广过程中对模块定义的规范化而产出。 {:&.moveIn}
 * CMD模块推崇依赖就近，用需加载。
 
-
+---
 > 闭包模块异步加载，闭包内的require依赖为同步执行，require.async解决异步问题，更灵活更方便。
 
 [slide]
@@ -89,39 +90,76 @@ speaker: heicx_sudo
      define(id?, deps?, factory); // Modules/CMD
      // FlyScript 的模块化语法糖.
      module.declare(function(require, exports, module){
-        var a = require("a"); 
+        var a = require("a");
         exports.foo = a.name; 
      });
 ```
 
 [slide]
 
+# 如何将现有的模块改为CMD模块
+## 改造主流模块
+---
+```javascript
+	if ( typeof module === "object" && module && typeof module.exports === "object" ) {
+		// 如果当前已经是一个 基于 CommonJS的模块，直接通过exports接口暴露引用
+		module.exports = jQuery;
+	} else {
+		// 设置全局
+	    window.jQuery = window.$ = jQuery;
+
+	    // 监测是否支持define关键字 监测是否支持amd或cmd规范
+	    if ( typeof define === "function" && define.amd ) {
+	        define( "jquery", [], function () { return jQuery; } );
+	    }
+	}
+```     
+
+[slide]
+
+# 如何将现有的模块改为CMD模块
+### 改造普通模块，比如现有文件 util.js
+
+```javascript
+	window.util = window.util || {};
+	util.addClass = function() {
+	  window.css();
+	};
+	util.queryString = function() {};
+```     
+
+```javascript
+	define(function(require, exports, module) {
+	  // 引入依赖
+	  var css = require('css');
+	  util.addClass = function() {
+	    css();
+	  };
+	  util.queryString = function() {};
+
+	  // 暴露对应接口
+	  module.exports = util;
+	});
+``` 
+
+[slide]
+
 
 # 目前主流的模块化框架有哪些？
 * mod.js {:&.moveIn}
-
-!["mod.js"](../images/fis.png)
+!["mod.js"](/images/fis.png)
 * sea.js
-
-!["sea.js"](../images/seajs.png)
+!["sea.js"](/images/seajs.png)
 * require.js
-
-!["require.js"](../images/require.png)
+!["require.js"](/images/require.png)
 * flyscript( Modules/Wrappings )
 
-[slide]
-
-# sea.js 与 require.js的比较
-
-[slide]
-
-# sea.js的优势有哪些？
 
 [slide]
 
 
 7.  sea.js API 只需看一遍
-* seajs.config 
+* seajs.config {:&.moveIn}
 * seajs.use
 * define
 * require
@@ -133,6 +171,25 @@ speaker: heicx_sudo
 
 # sea.js 应用场景与实战
 
+!["iautos"](/images/iautos.png)
+!["iautos"](/images/iautos_2.png)
+
 [slide]
+
+# 前端脚手架的使用 —— Grunt.js
+
+!["grunt"](/images/grunt.png)
+
+[slide]
+
+# Gruntfile.js 与 Package.json
+
+* 基于Node环境 {:&.moveIn}
+* 通过npm平台安装搭建
+* 提供上千中插件支持
+* 支持基于CommonJS规范的前端项目**自动化**打包
+
+[slide]
+
 
 
