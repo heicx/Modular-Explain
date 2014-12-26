@@ -3,7 +3,6 @@ Modular-Explain
 
 # 前端模块化 前端项目构建脚手架 CSS3实战
 
-----
 
 # 为什么要前端模块化？
 * 全局变量命名冲突
@@ -19,7 +18,6 @@ Modular-Explain
 * 跨环境共享，模块化遵循AMD或CMD规则
 * 通过脚手架实现模块化后的代码版本管理
 
-===
 
 # AMD 、 CMD 是什么，有何区别？
 > 对于没有Class，没有Package标准的Javascript脚本而言，他们是前端的模块化规范，各有优势。
@@ -50,11 +48,9 @@ Modular-Explain
 * CMD是sea.js在推广过程中对模块定义的规范化而产出
 * CMD模块推崇依赖就近，用需加载
 
----
 > 闭包模块异步加载，闭包内的require依赖为同步执行，require.async解决异步问题，更灵活更方便。
 
-[slide]
-
+===
 
 # CommonJS Modules的衍生派系
 * [Modules/1.x]( http://wiki.commonjs.org/wiki/Modules/1.1 ) 流派 代表.Node.js
@@ -107,10 +103,7 @@ Modular-Explain
 	}
 ```     
 
-===
-
-# 如何将现有的模块改为CMD模块
-### 改造普通模块，比如现有文件 util.js
+## 改造普通模块，比如现有文件 util.js
 
 ```javascript
 	window.util = window.util || {};
@@ -138,11 +131,11 @@ Modular-Explain
 
 # 目前主流的模块化框架有哪些？
 * mod.js
-!["mod.js"](/images/fis.png)
+!["mod.js"](/doc/images/fis.png)
 * sea.js
-!["sea.js"](/images/seajs.png)
+!["sea.js"](/doc/images/seajs.png)
 * require.js
-!["require.js"](/images/require.png)
+!["require.js"](/doc/images/require.png)
 * flyscript( Modules/Wrappings )
 
 ===
@@ -160,15 +153,16 @@ Modular-Explain
 
 # sea.js 应用场景与实战
 
-!["iautos"](/images/iautos.png)
-!["iautos"](/images/iautos_2.png)
+!["iautos"](/doc/images/iautos.png)
+!["iautos"](/doc/images/iautos_2.png)
 
 ===
 
 # 前端脚手架的使用 —— Grunt.js
 
-!["grunt"](/images/grunt.png)
+!["grunt"](/doc/images/grunt.png)
 
+===
 
 # Grunt.js 是什么？
 
@@ -178,8 +172,7 @@ Modular-Explain
 * 庞大的生态圈，提供上千种插件
 * 支持基于CommonJS规范的前端项目**自动化**打包
 
-  
-### 有哪些常用插件？
+## 有哪些常用插件？
 * grunt-cmd-transport
 * grunt-contrib-uglify
 * grunt-contrib-concat
