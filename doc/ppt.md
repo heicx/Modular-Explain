@@ -6,26 +6,26 @@ speaker: heicx_sudo
 # 前端模块化与CSS3实战
 ## 演讲者: 黑晨轩
 
-[slide]
+[slide data-transition="vertical3d"]
 
 
 # 为什么要前端模块化？
 ---
 * 全局变量命名冲突 {:&.moveIn}
 * 依赖关系繁琐
-* 业务逻辑模块化，页面内容碎片化。
-* 合理抽象模块公共化。
+* 业务逻辑模块化，页面内容碎片化
+* 合理抽象模块公共化
 
-[slide]
+[slide data-transition="zoomin"]
 
 # 前端模块化的好处有哪些？
 ---
 * 通过异步加载模块，提升页面性能。 {:&.moveIn}
-* 模块职责单一，规范模块命名，有利于代码的维护。
-* 跨环境共享，模块化遵循AMD或CMD规则。
-* 通过脚手架实现模块化后的代码版本管理。
+* 模块职责单一，规范模块命名，有利于代码的维护
+* 跨环境共享，模块化遵循AMD或CMD规则
+* 通过脚手架实现模块化后的代码版本管理
 
-[slide]
+[slide data-transition="stick"]
 
 # AMD 、 CMD 是什么，有何区别？
 > 对于没有Class，没有Package标准的Javascript脚本而言，他们是前端的模块化规范，各有优势。
@@ -43,19 +43,19 @@ speaker: heicx_sudo
 # CommonJS规范
 > AMD( Asynchronous Module Definition )
 
-* AMD是Require.js在推广过程中对模块定义的规范化而产出。 {:&.moveIn}
-* AMD模块推崇依赖前置，所有模块在闭包模块load module时提前加载。
-* 闭包模块的依赖异步加载。
+* AMD是Require.js在推广过程中对模块定义的规范化而产出 {:&.moveIn}
+* AMD模块推崇依赖前置，所有模块在闭包模块load module时提前加载
+* 闭包模块的依赖异步加载
 
 > 强者的妥协，在CommonJS发展至Modules/2.0后，Require.js也支持了CMD-Modules/Wrapping 的规范写法。但原理上依然保持依赖前置。
 
-[slide]
+[slide data-transition="stick"]
 
 # CommonJS规范
 > CMD( Common Module Definition )
 
-* CMD是sea.js在推广过程中对模块定义的规范化而产出。 {:&.moveIn}
-* CMD模块推崇依赖就近，用需加载。
+* CMD是sea.js在推广过程中对模块定义的规范化而产出 {:&.moveIn}
+* CMD模块推崇依赖就近，用需加载
 
 ---
 > 闭包模块异步加载，闭包内的require依赖为同步执行，require.async解决异步问题，更灵活更方便。
@@ -182,14 +182,95 @@ speaker: heicx_sudo
 
 [slide]
 
-# Gruntfile.js 与 Package.json
+# Grunt.js 是什么？
 
-* 基于Node环境 {:&.moveIn}
+* 前端javascript任务运行器 {:&.moveIn}
+* 基于Node环境
 * 通过npm平台安装搭建
-* 提供上千中插件支持
+* 庞大的生态圈，提供上千种插件
 * 支持基于CommonJS规范的前端项目**自动化**打包
+
+  
+### 有哪些常用插件？
+* grunt-cmd-transport {:&.moveIn}
+* grunt-contrib-uglify
+* grunt-contrib-concat
+* grunt-contrib-jshint
+* grunt-contrib-clean
+* grunt-contrib-cssmin
+...
 
 [slide]
 
+# Gruntfile.js 配置
+  
+```javascript
+	var transport = require('grunt-cmd-transport');
+	module.export  = function(grunt){
+		grunt.initConfig({
+		    	pkg: grunt.file.readJSON('package.json');
+		    	transport : {
+		    		options : {},
+		    		app : {},
+		    		...
+			},
+			cssmin : {
+				expand: true,
+				cwd: 'css/',
+				src: '*.css',
+				dest: 'dist/css/',
+				ext: '.css'
+			},
+			concat ：{},
+			uglify : {}
+			...
+	 	});
 
+		grunt.loadNpmTasks('grunt-cmd-transport');
+		grunt.loadNpmTasks('grunt-contrib-concat');
+		grunt.loadNpmTasks('grunt-contrib-clean');
+		grunt.loadNpmTasks('grunt-contrib-uglify');
+		grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+		grunt.registerTask('build-libs', [ 'clean:libs','transport:libs', 'concat:libs','uglify:libs']);
+		grunt.registerTask('build-app', ['clean:app','transport:app', 'concat:app', 'uglify:app']);
+		grunt.registerTask('build-config', ['clean:config','transport:config', 'concat:config', 'uglify:config' ]);
+		grunt.registerTask('build-css', ['clean:css','cssmin' ]);
+
+		// grunt.registerTask("defualt", [ 'clean']);
+	}
+```
+
+[slide]
+
+# Package.json 配置
+  
+```json
+	{
+		"name": "3g.iautos.cn",
+		"version": "1.0.1",
+		"author": "wukong_sudo",
+		"static_path": "/static2015/",
+	  	"spm": {
+	    		"alias": {
+			      "zepto": "js/libs/zepto.js",
+			      "render": "js/config/render",
+			      "base": "js/config/base",
+			      "juicer": "js/libs/juicer",
+			      "swipe": "js/libs/swiper"
+		    	}
+		},
+	  	"devDependencies": {
+			"grunt": "~0.4.5",
+			"grunt-contrib-jshint": "^0.10.0",
+		    	"grunt-contrib-uglify": "^0.5.1",
+		    	"grunt-contrib-clean": "^0.6.0",
+		    	"grunt-contrib-concat": "^0.5.0",
+		    	"grunt-timestamp": "0.0.8",
+		    	"grunt-contrib-cssmin": "^0.10.0"
+		}
+	}
+```
+
+[slide]
 
