@@ -38,11 +38,8 @@ Modular-Explain
 * AMD模块推崇依赖前置，所有模块在闭包模块load module时提前加载
 * 闭包模块的依赖异步加载
 
-> 强者的妥协，在CommonJS发展至Modules/2.0后，Require.js也支持了CMD-Modules/Wrapping 的规范写法。但原理上依然保持依赖前置。
+强者的妥协，在CommonJS发展至Modules/2.0后，Require.js也支持了CMD-Modules/Wrapping 的规范写法。但原理上依然保持依赖前置。
 
-===
-
-# CommonJS规范
 > CMD( Common Module Definition )
 
 * CMD是sea.js在推广过程中对模块定义的规范化而产出
