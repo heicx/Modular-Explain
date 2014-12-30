@@ -67,9 +67,6 @@ Modular-Explain
      define define(id?, deps?, factory); // Modules/AMD support Simplified CommonJS Wrapper
 ```
 
-===
-
-# CommonJS Modules的衍生派系
 * [Modules/2.0]( http://www.seajs.org ) 流派 代表.FlyScript Sea.js
 ```javascript
      define(id?, deps?, factory); // Modules/CMD
