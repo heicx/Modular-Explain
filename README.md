@@ -384,6 +384,32 @@ background-origin: content-box;
 
 总结：背景图片设置必须为no-repeat，反之background-origin的设置无效。
 
+
+background-clip
+background-clip用来将背景图片做适当的裁剪以适应实际需要。
+
+/* 参数分别表示从边框、或内填充，或者内容区域向外裁剪背景。no-clip表示不裁切，和参数border-box显示同样的效果。backgroud-clip默认值为border-box。 */
+background-clip ： border-box | padding-box | content-box | no-clip 
+
+background-size
+background-size用来设置背景图片的大小，以长度值(长宽像素值对)或百分比显示，还可以通过cover和contain来对图片进行伸缩。  
+
+/*   auto：默认值，不改变背景图片的高度和宽度 
+     长度值：成对出现，如200px 50px，如果只写一个值，将按照图片宽度等比缩放
+     百分比：0-100%之间任何值。
+     cover：等比缩放以填充满整个容器。
+     contain：等比缩放至某一边紧贴容器边缘。
+*/
+background-size: auto | <长度值> | <百分比> | cover | contain 
+
+multiple backgrounds
+multiple backgrounds：多重背景，也就是CSS2里background的属性外加origin、clip和size组成的新background的多次叠加，缩写时为用逗号隔开的每组值；用分解写法时，如果有多个背景图片，而其他属性只有一个（例如background-repeat只有一个），表明所有背景图片应用该属性值。 
+
+background ： [background-color] | [background-image] | [background-position][/background-size] | [background-repeat] | [background-attachment] | [background-clip] | [background-origin],…
+
+ 总结：用逗号隔开每组background的缩写值；如果有size值，需要紧跟position并且用"/"隔开；分解写法时，background-color只能设置一个。
+
+
 7.  选择器
 8.  变形与动画
 9.  布局样式
