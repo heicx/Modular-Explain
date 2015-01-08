@@ -328,12 +328,62 @@ box-shadow: 4px 2px 4px #ccc inset, 4px 2px 2px #fff;
 
 总结：基本与rgb的用法一致。
 
-  渐变颜色: linear-gradient
   
+渐变色背景: linear-gradient
+  /* 第一参数表示渐变方向，从左上角到又下角为 to right bottom */
+  background-image: linear-gradient(to right bottom, red, blue);
   
 
 5.  文字与字体
+text-overflow 与 word-wrap
+
+text-overflow表示是否使用一个省略号标示对象内的文本溢出。
+word-wrap表示当前行超过容器宽度时是否断行。
+
+/* clip表示剪切  ellipsis表示省略标记 */
+text-overflow: clip | ellipsis
+
+/* normal表示连续文本换行  break-word表示内容在边界内换行( 主要用于单词或URL地址换行 ) */
+word-wrap: normal | break-word
+
+注意：text-overflow在使用过程中还需要定义文本在一行内显示(white-space:nowrap)及溢出内容为隐藏(overflow:hidden)，只有这样才能实现溢出文本显示省略号的效果。
+
+@font-face
+
+  @font-face能够加载服务器端的字体文件，让浏览器端可以显示用户电脑里没有安装的字体。 
+
+@font-face{
+     font-family: 字体名称;
+     src: 字体文件在服务器上的相对或绝对路径;
+}
+
+总结：字体库文件需要正确引入并文件格式正确可用, otf格式。
+
+text-shadow
+
+/*
+     X-Offset：表示阴影的水平偏移距离，正值时阴影向右偏移，反之向左。
+     Y-Offset：表示阴影的垂直偏移距离，正值时阴影向下偏移，反之向上。
+     Blur: 表示阴影模糊程度，数值越大越模糊，反之清晰。默认为0。
+     Color：表示阴影颜色，可以使用rgba色。
+*/
+text-shadow: 2px 2px 0px rgba(100,200,0,0.6);
+
+
 6.  背景
+background-origin
+background-origin可以设置元素背景图片的原始起始位置
+
+/* 参数分别表示背景图片是从边框，还是内边距（默认值），或者是内容区域开始显示。 */
+background-origin ： border-box | padding-box | content-box; 
+
+eg: 
+
+background:#ccc url(xxx.png) no-repeat;
+background-origin: content-box;
+
+总结：背景图片设置必须为no-repeat，反之background-origin的设置无效。
+
 7.  选择器
 8.  变形与动画
 9.  布局样式
