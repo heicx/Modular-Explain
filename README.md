@@ -246,6 +246,7 @@ Modular-Explain
 	}
 ```
 
+
 #CSS3实战
 
 1.  什么是cs3？
@@ -410,7 +411,122 @@ background ： [background-color] | [background-image] | [background-position][/
  总结：用逗号隔开每组background的缩写值；如果有size值，需要紧跟position并且用"/"隔开；分解写法时，background-color只能设置一个。
 
 
+
 7.  选择器
+属性选择器
+css3的属性选择器表达式增加了通配符的概念，使得属性选择器匹配更加灵活。
+E[att^="val"] 匹配E元素且属性为att的以val开头的任何字符串。
+E[att$="val"] 匹配E元素且属性为att的以val结尾的任何字符串。
+E[att*="val"] 匹配E元素且属性为att的包含val的任何字符串。
+
+eg：
+<a href="xxx.pdf" class="icon" title="more books123" ></a>
+
+<style>
+     a[href$='pdf']{
+          color:#fff;
+     }
+     a[title*=books]{
+          background:blue;
+     }
+     a[class^='icon']{
+          color:#fff;
+          background:green;
+     }
+</style>
+
+结构性伪类选择器--not
+结构性伪类选择器--empty
+结构性伪类选择器--not
+结构性伪类选择器--target
+结构性伪类选择器--first-child
+结构性伪类选择器--last-child
+/* 
+偶数为2n，奇数为2n-1 
+nth-child 为正序选择
+nth-last-child 为倒序选择
+*/
+结构性伪类选择器--nth-child(n)
+结构性伪类选择器--nth-last-child(n)
+
+/*
+改变第一个或最后一个段落的背景为橙色
+*/
+first-of-type选择器
+last-of-type选择器
+
+<div>
+     <p>…</p>
+</div>
+<p>…</p>
+<p>…</p>
+<div>...</div>
+
+/*
+按正序或倒序改变n个段落的背景为橙色
+*/
+nth-of-type(n)选择器
+nth-last-of-type(n)选择器
+
+/* 
+通过“:only-child”选择器只匹配有且只有一个的元素。
+若子元素中包含多个指定元素或不包括元素，则不匹配。
+*/
+only-child选择器
+
+eg:
+// 通过only-child来匹配
+p:only-child{
+     background: orange;
+}
+
+<div>
+     <p>...</p>
+     <p>...</p>
+     <p>...</p>
+</div>
+
+<div>
+     <p>匹配</p>
+</div>
+
+<div>
+     <div>...</div>
+     <p>...</p>
+     <div>...</div>
+</div>
+
+/* 
+通过“:only-of-type”选择器是从多个子元素中匹配指定类型的元素
+若子元素中包含多个指定元素，则不匹配。
+*/
+only-of-type选择器
+
+eg:
+// 通过only-of-type来匹配
+p:only-of-type{
+     background: orange;
+}
+
+<div>
+     <p>...</p>
+     <p>...</p>
+     <p>...</p>
+</div>
+
+<div>
+     <p>匹配</p>
+</div>
+
+<div>
+     <div>...</div>
+     <p>匹配</p>
+     <div>...</div>
+</div>
+
+
+
 8.  变形与动画
 9.  布局样式
 10. Media Queries 与 响应设计
+
