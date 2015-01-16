@@ -301,9 +301,7 @@ speaker: heicx_sudo
 <br/>
 * 选择器 {:&.pull-left}{:&.bounceIn}
  >以前我们通常用class、 ID 或 tagname 来选择HTML元素，CSS3的选择器强大的难以置信。它们可以减少在标签中的class和ID的数量更方便的维护样式表、更好的实现结构与表现的分离。
-
-
-* 圆角效果 {:&.bounceIn}
+* 圆角效果
 > 以前做圆角通常使用背景图片，或繁琐的元素拼凑，现在很简单了 border-radius 帮你轻松搞定。
 
 * 块阴影与文字阴影
@@ -622,6 +620,15 @@ p:only-of-type{
      <div>...</div>
 </div>
 ```
+
+[slide]
+
+##8.  变形与动画
+----
+
+* Transform：对元素进行变形； {:&.bounceIn}
+* Transition：对元素某个属性或多个属性的变化，进行控制（时间等），类似flash的补间动画。但只有两个关键贞。开始，结束。
+* Animation：对元素某个属性或多个属性的变化，进行控制（时间等），类似flash的补间动画。可以设置多个关键贞。
 
 <!--
 8.  变形与动画
