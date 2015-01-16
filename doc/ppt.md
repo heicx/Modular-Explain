@@ -280,7 +280,7 @@ speaker: heicx_sudo
 
 [slide]
 
-##1.  什么是cs3？
+##1.  什么是css3？
 ----
 
 
@@ -350,7 +350,7 @@ speaker: heicx_sudo
 
 * 圆角效果：border-radius {:&.bounceIn}
 * ```css
-	// 所有角都使用半径为10jpx的圆角
+	// 所有角都使用半径为10px的圆角
 	border-radius:10px;
 	// 四个半径值分别是左上角、右上角、右下角和左下角，顺时针
 	border-radius:5px 4px 3px 2px;
@@ -487,31 +487,29 @@ word-wrap表示当前行超过容器宽度时是否断行。
 ```
 
 * multiple backgrounds
-> multiple backgrounds：多重背景，也就是CSS2里background的属性外加origin、clip和size组成的新background的多次叠加，缩写时为用逗号隔开的每组值；用分解写法时，如果有多个背景图片，而其他属性只有一个（例如background-repeat只有一个），表明所有背景图片应用该属性值。 
+> multiple backgrounds：多重背景，也就是CSS2里background的属性外加origin、clip和size组成的新background的多次叠加，缩写时为用逗号隔开的每组值；
+<br/>用分解写法时，如果有多个背景图片，而其他属性只有一个（例如background-repeat只有一个），表明所有背景图片应用该属性值。 
 
 * ```css
-background ： [background-color] | [background-image] | [background-position][/background-size] | [background-repeat] | [background-attachment] | [background-clip] | [background-origin],…
+background ： [background-color] | [background-image] | [background-position][/background-size] | 
+[background-repeat] | [background-attachment] | [background-clip] | [background-origin]
 ```
 > 总结：用逗号隔开每组background的缩写值；如果有size值，需要紧跟position并且用"/"隔开；分解写法时，background-color只能设置一个。
 
 [slide]
 
+##7.  选择器
+----
 
+* 属性选择器  {:&.bounceIn}
+> css3的属性选择器表达式增加了通配符的概念，使得属性选择器匹配更加灵活。
 
-
-
-
-
-7.  选择器
-属性选择器
-css3的属性选择器表达式增加了通配符的概念，使得属性选择器匹配更加灵活。
-E[att^="val"] 匹配E元素且属性为att的以val开头的任何字符串。
-E[att$="val"] 匹配E元素且属性为att的以val结尾的任何字符串。
-E[att*="val"] 匹配E元素且属性为att的包含val的任何字符串。
-
+* E[att^="val"] 匹配E元素且属性为att的以val开头的任何字符串。
+* E[att$="val"] 匹配E元素且属性为att的以val结尾的任何字符串。
+* E[att*="val"] 匹配E元素且属性为att的包含val的任何字符串。
+* ```html
 eg：
 <a href="xxx.pdf" class="icon" title="more books123" ></a>
-
 <style>
      a[href$='pdf']{
           color:#fff;
@@ -524,99 +522,109 @@ eg：
           background:green;
      }
 </style>
+```
 
-结构性伪类选择器--not
-结构性伪类选择器--empty
-结构性伪类选择器--not
-结构性伪类选择器--target
-结构性伪类选择器--first-child
-结构性伪类选择器--last-child
-/* 
-偶数为2n，奇数为2n-1 
+[slide]
+
+##7.  选择器
+----
+
+## 还有那些选择器？
+
+* 结构性伪类选择器--not {:&.bounceIn}
+* 结构性伪类选择器--empty
+* 结构性伪类选择器--not
+* 结构性伪类选择器--target
+* 结构性伪类选择器--first-child
+* 结构性伪类选择器--last-child
+* 结构性伪类选择器--nth-child(n)
+* 结构性伪类选择器--nth-last-child(n)
+* ```html
+// 偶数为2n，奇数为2n-1 
 nth-child 为正序选择
 nth-last-child 为倒序选择
-*/
-结构性伪类选择器--nth-child(n)
-结构性伪类选择器--nth-last-child(n)
+```
+[slide]
 
-/*
-改变第一个或最后一个段落的背景为橙色
-*/
-first-of-type选择器
-last-of-type选择器
+##7.  选择器
+----
 
+* first-of-type选择器 {:&.bounceIn}
+* last-of-type选择器
+* ```html
+// 按正序或倒序改变n个段落的背景为橙色
+// nth-of-type(n)选择器
+// nth-last-of-type(n)选择器
 <div>
      <p>…</p>
 </div>
 <p>…</p>
 <p>…</p>
 <div>...</div>
+p:nth-of-type(n){
+     background: orange;
+}
+```
+[slide]
 
-/*
-按正序或倒序改变n个段落的背景为橙色
-*/
-nth-of-type(n)选择器
-nth-last-of-type(n)选择器
+##7.  选择器
+----
 
-/* 
-通过“:only-child”选择器只匹配有且只有一个的元素。
-若子元素中包含多个指定元素或不包括元素，则不匹配。
-*/
-only-child选择器
-
-eg:
+* only-child选择器 {:&.bounceIn}
+* ```html
+// 通过“:only-child”选择器只匹配有且只有一个的元素。
+// 若子元素中包含多个指定元素或不包括元素，则不匹配。
+// eg:
 // 通过only-child来匹配
 p:only-child{
      background: orange;
 }
-
 <div>
      <p>...</p>
      <p>...</p>
      <p>...</p>
 </div>
-
 <div>
      <p>匹配</p>
 </div>
-
 <div>
      <div>...</div>
      <p>...</p>
      <div>...</div>
 </div>
+```
 
-/* 
-通过“:only-of-type”选择器是从多个子元素中匹配指定类型的元素
-若子元素中包含多个指定元素，则不匹配。
-*/
-only-of-type选择器
+[slide]
 
-eg:
-// 通过only-of-type来匹配
+##7.  选择器
+----
+
+* only-of-type选择器 {:&.bounceIn}
+* ```html
+// 通过“:only-of-type”选择器是从多个子元素中匹配指定类型的元素
+// 若子元素中包含多个指定元素，则不匹配。
+// eg:
+// 通过only-child来匹配
 p:only-of-type{
      background: orange;
 }
-
 <div>
      <p>...</p>
      <p>...</p>
      <p>...</p>
 </div>
-
 <div>
      <p>匹配</p>
 </div>
-
 <div>
      <div>...</div>
      <p>匹配</p>
      <div>...</div>
 </div>
+```
 
-
-
+<!--
 8.  变形与动画
 9.  布局样式
 10. Media Queries 与 响应设计
-
+-->
